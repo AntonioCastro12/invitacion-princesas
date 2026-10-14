@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" width="640" height="880">
+          <defs>
+            <linearGradient id="snowSkirt" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fef08a" />
+              <stop offset="50%" stop-color="#facc15" />
+              <stop offset="100%" stop-color="#eab308" />
+            </linearGradient>
+          </defs>
+
+          
+          <ellipse cx="80" cy="62" rx="42" ry="38" fill="#0f172a" stroke="#020617" stroke-width="2" />
+
+          
+          <g>
+            <path d="M 52 38 Q 80 26 108 38" stroke="#ef4444" stroke-width="5" fill="none" />
+            <path d="M 74 25 Q 80 18 86 25 Q 83 32 80 27 Q 77 32 74 25 Z" fill="#dc2626" stroke="#991b1b" stroke-width="1" />
+            <circle cx="80" cy="27" r="4" fill="#ef4444" />
+          </g>
+
+          
+          <ellipse cx="80" cy="74" rx="35" ry="32" fill="#fff7ed" />
+
+          
+          <path d="M 46 64 C 60 76, 75 70, 80 65 C 85 70, 100 76, 114 64 C 112 48, 48 48, 46 64 Z" fill="#0f172a" />
+
+          
+          <g>
+            <ellipse cx="66" cy="76" rx="7" ry="9" fill="#1e1b4b" />
+            <circle cx="64" cy="72" r="3.2" fill="#ffffff" />
+            <circle cx="68" cy="80" r="1.8" fill="#78350f" />
+            <path d="M 58 67 Q 66 62 74 67" stroke="#0f172a" stroke-width="2" stroke-linecap="round" fill="none" />
+            <path d="M 72 68 L 76 65" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" />
+
+            <ellipse cx="94" cy="76" rx="7" ry="9" fill="#1e1b4b" />
+            <circle cx="92" cy="72" r="3.2" fill="#ffffff" />
+            <circle cx="96" cy="80" r="1.8" fill="#78350f" />
+            <path d="M 86 67 Q 94 62 102 67" stroke="#0f172a" stroke-width="2" stroke-linecap="round" fill="none" />
+            <path d="M 100 68 L 104 65" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" />
+          </g>
+
+          
+          <ellipse cx="58" cy="86" rx="6" ry="4" fill="#f43f5e" opacity="0.65" />
+          <ellipse cx="102" cy="86" rx="6" ry="4" fill="#f43f5e" opacity="0.65" />
+          <path d="M 76 87 Q 80 93 84 87" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+          
+          <path d="M 54 105 L 80 115 L 106 105 L 100 95 L 60 95 Z" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+
+          
+          <path d="M 64 108 L 96 108 L 91 135 L 69 135 Z" fill="#1d4ed8" stroke="#1e40af" stroke-width="2" />
+
+          
+          <circle cx="48" cy="116" r="13" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.5" />
+          <ellipse cx="48" cy="116" rx="4" ry="9" fill="#ef4444" />
+          <circle cx="112" cy="116" r="13" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.5" />
+          <ellipse cx="112" cy="116" rx="4" ry="9" fill="#ef4444" />
+
+          
+          <path d="M 68 135 Q 80 145 92 135 L 132 205 C 132 216, 28 216, 28 205 Z" fill="url(#snowSkirt)" stroke="#ca8a04" stroke-width="2.5" />
+
+          
+          <circle cx="80" cy="145" r="7" fill="#dc2626" stroke="#991b1b" stroke-width="1.2" />
+          <path d="M 80 138 Q 82 134 84 135" stroke="#78350f" stroke-width="1.5" fill="none" />
+          <circle cx="80" cy="144" r="1.5" fill="#fca5a5" />
+
+          <g transform="translate(112, 38) scale(0.6)"><circle cx="10" cy="11" r="7" fill="#ef4444" /><path d="M 10 4 Q 13 2 14 5" stroke="#15803d" stroke-width="2" fill="none" /></g>
+        </svg>

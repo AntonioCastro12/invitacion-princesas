@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" width="640" height="880">
+          <defs>
+            <linearGradient id="tianaDress" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#bbf7d0" />
+              <stop offset="50%" stop-color="#86efac" />
+              <stop offset="100%" stop-color="#22c55e" />
+            </linearGradient>
+          </defs>
+
+          
+          <circle cx="80" cy="46" rx="36" ry="32" fill="#1c1917" stroke="#0c0a09" stroke-width="2" />
+          <circle cx="80" cy="22" r="18" fill="#292524" />
+
+          
+          <path d="M 70 34 L 80 20 L 90 34 Z" fill="#86efac" stroke="#16a34a" stroke-width="1.2" />
+          <circle cx="80" cy="28" r="3.5" fill="#fef08a" />
+
+          
+          <ellipse cx="80" cy="74" rx="35" ry="32" fill="#a16207" />
+
+          
+          <g>
+            <ellipse cx="66" cy="76" rx="7" ry="9" fill="#0f172a" />
+            <circle cx="64" cy="72" r="3.2" fill="#ffffff" />
+            <circle cx="68" cy="80" r="1.8" fill="#78350f" />
+            <path d="M 58 67 Q 66 62 74 67" stroke="#292524" stroke-width="2" stroke-linecap="round" fill="none" />
+            <path d="M 72 68 L 76 65" stroke="#292524" stroke-width="1.8" stroke-linecap="round" />
+
+            <ellipse cx="94" cy="76" rx="7" ry="9" fill="#0f172a" />
+            <circle cx="92" cy="72" r="3.2" fill="#ffffff" />
+            <circle cx="96" cy="80" r="1.8" fill="#78350f" />
+            <path d="M 86 67 Q 94 62 102 67" stroke="#292524" stroke-width="2" stroke-linecap="round" fill="none" />
+            <path d="M 100 68 L 104 65" stroke="#292524" stroke-width="1.8" stroke-linecap="round" />
+          </g>
+
+          
+          <ellipse cx="58" cy="86" rx="5.5" ry="3.5" fill="#f472b6" opacity="0.4" />
+          <ellipse cx="102" cy="86" rx="5.5" ry="3.5" fill="#f472b6" opacity="0.4" />
+          <path d="M 76 87 Q 80 92 84 87" stroke="#451a03" stroke-width="2.2" stroke-linecap="round" fill="none" />
+
+          
+          
+          <path d="M 64 108 L 96 108 L 91 135 L 69 135 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5" />
+
+          
+          <path d="M 68 135 Q 80 145 92 135 L 132 205 C 132 216, 28 216, 28 205 Z" fill="url(#tianaDress)" stroke="#16a34a" stroke-width="2.5" />
+
+          
+          <path d="M 68 135 Q 50 165 70 180 Q 80 155 70 135 Z" fill="#fef08a" opacity="0.85" />
+          <circle cx="75" cy="140" r="5" fill="#ffffff" />
+          <circle cx="75" cy="140" r="2" fill="#fef08a" />
+
+          <g transform="translate(112, 38) scale(0.6)"><circle cx="10" cy="10" r="4" fill="#f472b6" /><circle cx="10" cy="10" r="2" fill="#fef08a" /></g>
+        </svg>

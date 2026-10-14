@@ -1,0 +1,6 @@
+{
+  "name": "Invitación Real de Princesas - Fiesta Mágica",
+  "description": "Invitación digital interactiva con princesas bebés saliendo del castillo, cuenta regresiva, mapa y confirmación por WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
