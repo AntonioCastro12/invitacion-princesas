@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
-import { Crown, Sparkles, Heart, ChevronDown, Download, RotateCcw } from 'lucide-react';
+import { Crown, Sparkles, Heart, ChevronDown } from 'lucide-react';
 import { InvitationData, PRINCESSES_DATA, PrincessCharacter } from '../types/invitation';
 
 interface PrincessGatheringStageProps {
@@ -9,16 +9,27 @@ interface PrincessGatheringStageProps {
   isCastleOpen: boolean;
   onOpenCastle: () => void;
   onRevealDetails: () => void;
-  onOpenDownloadModal: () => void;
 }
 
-// Stepped royal procession coordinates emerging from the castle archway
-const PROCESSION_POSITIONS: Record<string, { xSm: number; ySm: number; xLg: number; yLg: number; zIndex: number; scale: number }> = {
-  cinderella: { xSm: -95, ySm: 28, xLg: -140, yLg: 40, zIndex: 35, scale: 1.05 },
-  belle:      { xSm: -50, ySm: -16, xLg: -75,  yLg: -20, zIndex: 25, scale: 0.95 },
-  ariel:      { xSm: 0,   ySm: 54, xLg: 0,    yLg: 75, zIndex: 40, scale: 1.15 },
-  aurora:     { xSm: 50,  ySm: -16, xLg: 75,   yLg: -20, zIndex: 25, scale: 0.95 },
-  anna:       { xSm: 95,  ySm: 28, xLg: 140,  yLg: 40, zIndex: 35, scale: 1.05 },
+// Royal procession coordinates surrounding the castle in a majestic horseshoe arc
+const PROCESSION_POSITIONS: Record<
+  string,
+  { xSm: number; ySm: number; xLg: number; yLg: number; zIndex: number; scale: number; delay: number }
+> = {
+  // Torre superior izquierda (mágica y etérea)
+  elsa:     { xSm: -112, ySm: -190, xLg: -170, yLg: -230, zIndex: 26, scale: 0.95, delay: 0.5 },
+  // Flanco medio izquierdo (balcón / jardín lateral)
+  belle:    { xSm: -128, ySm: -95,  xLg: -188, yLg: -115, zIndex: 28, scale: 1.0,  delay: 0.32 },
+  // Jardín inferior izquierdo (sendero de flores)
+  mulan:    { xSm: -108, ySm: 12,   xLg: -155, yLg: 18,   zIndex: 32, scale: 1.05, delay: 0.18 },
+  // Frente y centro (salida principal de las puertas)
+  rapunzel: { xSm: 0,    ySm: 60,   xLg: 0,    yLg: 80,   zIndex: 40, scale: 1.15, delay: 0.05 },
+  // Jardín inferior derecho (sendero de flores)
+  anna:     { xSm: 108,  ySm: 12,   xLg: 155,  yLg: 18,   zIndex: 32, scale: 1.05, delay: 0.18 },
+  // Flanco medio derecho (balcón / jardín lateral)
+  ariel:    { xSm: 128,  ySm: -95,  xLg: 188,  yLg: -115, zIndex: 28, scale: 1.0,  delay: 0.32 },
+  // Torre superior derecha (mágica y etérea)
+  aurora:   { xSm: 112,  ySm: -190, xLg: 170,  yLg: -230, zIndex: 26, scale: 0.95, delay: 0.5 },
 };
 
 export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
@@ -26,7 +37,6 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
   isCastleOpen,
   onOpenCastle,
   onRevealDetails,
-  onOpenDownloadModal,
 }) => {
   const [activePrincess, setActivePrincess] = useState<PrincessCharacter | null>(null);
   const [replayKey, setReplayKey] = useState(0);
@@ -57,18 +67,6 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
     });
   };
 
-  const handleReplayProcession = () => {
-    setReplayKey((k) => k + 1);
-    if (!isCastleOpen) {
-      onOpenCastle();
-    }
-    confetti({
-      particleCount: 50,
-      spread: 70,
-      origin: { y: 0.5 },
-      colors: ['#ffd700', '#f472b6', '#38bdf8', '#c084fc'],
-    });
-  };
 
   return (
     <div className="relative w-full flex flex-col items-center justify-start overflow-hidden pt-2 px-2 select-none">
@@ -102,8 +100,8 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
       </motion.div>
 
       {/* Main Enchanted Arena: Fairytale Castle with Baby Princesses Emerging from Gates */}
-      <div className="relative w-full max-w-lg mx-auto flex flex-col items-center justify-center my-2">
-        <div className="relative w-full flex items-center justify-center min-h-[460px] sm:min-h-[520px]">
+      <div className="relative w-full max-w-xl sm:max-w-2xl mx-auto flex flex-col items-center justify-center my-2">
+        <div className="relative w-full flex items-center justify-center min-h-[480px] sm:min-h-[550px]">
           {/* Fairy Glow Behind Castle */}
           <div className="absolute inset-x-8 top-12 bottom-16 -z-10 rounded-full bg-radial from-pink-200/90 via-rose-100/40 to-transparent blur-2xl pointer-events-none" />
 
@@ -123,7 +121,7 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
               />
 
               {/* Radiant Portal Light Effect Inside Archway */}
-              <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-28 sm:w-36 h-28 sm:h-36 overflow-hidden flex items-end justify-center pointer-events-none">
+              <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-24 sm:w-30 h-24 sm:h-30 overflow-hidden flex items-end justify-center pointer-events-none">
                 {isCastleOpen ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.6 }}
@@ -137,18 +135,18 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
                   <motion.div
                     animate={{ opacity: [0.4, 0.8, 0.4], scale: [0.9, 1.05, 0.9] }}
                     transition={{ repeat: Infinity, duration: 2.5 }}
-                    className="w-20 h-24 rounded-t-full bg-amber-200/50 blur-sm flex items-center justify-center"
+                    className="w-16 h-20 rounded-t-full bg-amber-200/50 blur-sm flex items-center justify-center"
                   >
-                    <span className="text-xl">🌟</span>
+                    <span className="text-lg">🌟</span>
                   </motion.div>
                 )}
               </div>
 
               {/* Emerging Baby Princesses Procession */}
-              {/* They start inside the castle portal and fan out down the cobblestone path! */}
-              <div key={replayKey} className="absolute bottom-[16%] left-1/2 -translate-x-1/2 w-0 h-0 pointer-events-none">
+              {/* They start inside the castle portal and fan out surrounding the castle! */}
+              <div key={replayKey} className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-0 h-0 pointer-events-none">
                 {PRINCESSES_DATA.map((princess, idx) => {
-                  const pos = PROCESSION_POSITIONS[princess.id] || { xSm: 0, ySm: 40, xLg: 0, yLg: 50, zIndex: 30, scale: 1 };
+                  const pos = PROCESSION_POSITIONS[princess.id] || { xSm: 0, ySm: 40, xLg: 0, yLg: 50, zIndex: 30, scale: 1, delay: idx * 0.1 };
                   const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
                   const targetX = isMobile ? pos.xSm : pos.xLg;
                   const targetY = isMobile ? pos.ySm : pos.yLg;
@@ -156,7 +154,7 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
                   return (
                     <motion.div
                       key={princess.id}
-                      initial={{ scale: 0.1, opacity: 0, x: 0, y: -45 }}
+                      initial={{ scale: 0.1, opacity: 0, x: 0, y: -30 }}
                       animate={
                         isCastleOpen
                           ? {
@@ -165,13 +163,13 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
                               x: targetX,
                               y: targetY,
                               transition: {
-                                delay: 0.2 + idx * 0.16,
+                                delay: 0.15 + (pos.delay ?? idx * 0.12),
                                 type: 'spring',
-                                stiffness: 90,
-                                damping: 11,
+                                stiffness: 85,
+                                damping: 12,
                               },
                             }
-                          : { scale: 0.1, opacity: 0, x: 0, y: -45 }
+                          : { scale: 0.1, opacity: 0, x: 0, y: -30 }
                       }
                       className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-auto cursor-pointer"
                       style={{ zIndex: pos.zIndex }}
@@ -197,7 +195,7 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
                           ease: 'easeInOut',
                           delay: 0.8 + idx * 0.2,
                         }}
-                        whileHover={{ scale: 1.22, y: -12 }}
+                        whileHover={{ scale: 1.18, y: -8 }}
                         whileTap={{ scale: 0.92 }}
                         className="relative flex flex-col items-center filter drop-shadow-lg hover:drop-shadow-2xl transition-all"
                       >
@@ -207,8 +205,15 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
                           style={{ backgroundColor: princess.color }}
                         />
 
+                        {/* Stardust for upper floating princesses */}
+                        {pos.ySm < -100 && (
+                          <span className="absolute -top-2 -right-1 text-xs animate-bounce pointer-events-none" style={{ animationDuration: '3s' }}>
+                            ✨
+                          </span>
+                        )}
+
                         {/* Baby Princess Image */}
-                        <div className="w-18 h-22 sm:w-24 sm:h-28 flex items-end justify-center">
+                        <div className="w-18 h-22 sm:w-22 sm:h-26 flex items-end justify-center">
                           <img
                             src={`/images/princesses/${princess.id}.png`}
                             alt={princess.name}
@@ -251,7 +256,7 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-14 sm:mt-18 flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/90 border border-pink-200 text-[11px] font-bold text-pink-800 shadow-xs z-30"
+                className="mt-20 sm:mt-24 flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/90 border border-pink-200 text-[11px] font-bold text-pink-800 shadow-xs z-30"
               >
                 <Sparkles className="w-3.5 h-3.5 text-pink-500 animate-spin" style={{ animationDuration: '4s' }} />
                 <span>Las princesas bebés han salido del castillo • Toca a cada una</span>
@@ -309,30 +314,7 @@ export const PrincessGatheringStage: React.FC<PrincessGatheringStageProps> = ({
           <ChevronDown className="w-4 h-4 animate-bounce" />
         </button>
 
-        {/* Secondary Action Row: Replay Procession + Download Assets Modal */}
-        <div className="flex flex-wrap items-center justify-center gap-2 w-full">
-          {/* Re-play emerging procession */}
-          {/* <button
-            onClick={handleReplayProcession}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 hover:bg-pink-50 text-pink-700 text-xs font-bold shadow-xs border border-pink-200 hover:scale-105 active:scale-95 transition-all cursor-pointer"
-            title="Volver a hacer salir a las princesas del castillo"
-          >
-            <RotateCcw className="w-3.5 h-3.5 text-pink-500" />
-            <span>Volver a Salir del Castillo</span> */}
-          {/* </button> */}
-
-          {/* Download baby princesses and castle PNGs */}
-          {/* <button
-            onClick={onOpenDownloadModal}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 hover:bg-pink-50 text-pink-700 text-xs font-bold shadow-xs border border-pink-200 hover:scale-105 active:scale-95 transition-all cursor-pointer"
-            title="Descargar imágenes de princesas bebés y el castillo"
-          >
-            <Download className="w-3.5 h-3.5 text-pink-500" />
-            <span>Descargar Imágenes (Castillo + Princesas Bebés)</span>
-          </button> */}
-        </div>
-
-        <p className="text-[11px] text-pink-800/80 font-bold mt-1">
+        <p className="text-[11px] text-pink-800/80 font-bold mt-2">
           ✨ Toca el castillo o a las princesas para descubrir su magia ✨
         </p>
       </motion.div>

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
-import { Sparkles, Heart, Settings, Crown, Download } from 'lucide-react';
+import { Sparkles, Heart, Settings, Crown } from 'lucide-react';
 import { DEFAULT_INVITATION, InvitationData } from './types/invitation';
 import { ParticleSparkles } from './components/ParticleSparkles';
 import { PrincessGatheringStage } from './components/PrincessGatheringStage';
@@ -73,7 +73,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#fdf2f4] via-[#fde8ed] to-[#fce4ec] text-[#4a2e35] overflow-x-hidden selection:bg-pink-300 selection:text-pink-900">
+    <div className="relative min-h-screen bg-linear-to-b from-[#fdf2f4] via-[#fde8ed] to-[#fce4ec] text-[#4a2e35] overflow-x-hidden selection:bg-pink-300 selection:text-pink-900">
       {/* Interactive Fairy Particle Canvas & Falling Petals */}
       <ParticleSparkles />
 
@@ -83,13 +83,13 @@ export default function App() {
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.05, transition: { duration: 0.8 } }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gradient-to-b from-pink-950/70 via-purple-950/60 to-pink-950/80 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-linear-to-b from-pink-950/70 via-purple-950/60 to-pink-950/80 backdrop-blur-md"
           >
             <motion.div
               initial={{ scale: 0.85, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               transition={{ duration: 0.8, type: 'spring' }}
-              className="relative w-full max-w-sm bg-gradient-to-b from-[#fff5f7] via-[#fde8ed] to-[#fce4ec] rounded-[36px] p-8 border-2 border-pink-300 shadow-2xl text-center overflow-hidden"
+              className="relative w-full max-w-sm bg-linear-to-b from-[#fff5f7] via-[#fde8ed] to-[#fce4ec] rounded-[36px] p-8 border-2 border-pink-300 shadow-2xl text-center overflow-hidden"
             >
               {/* Delicate watercolor cherry blossom corner accent */}
               <div className="absolute top-2 left-3 text-pink-400 select-none text-xl">🌸</div>
@@ -119,7 +119,7 @@ export default function App() {
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.94 }}
                 onClick={handleOpenEnvelope}
-                className="relative inline-flex flex-col items-center justify-center w-28 h-28 rounded-full bg-gradient-to-br from-pink-500 via-rose-500 to-pink-600 text-white shadow-2xl border-4 border-white hover:shadow-pink-400/80 transition-all cursor-pointer group mx-auto"
+                className="relative inline-flex flex-col items-center justify-center w-28 h-28 rounded-full bg-linear-to-br from-pink-500 via-rose-500 to-pink-600 text-white shadow-2xl border-4 border-white hover:shadow-pink-400/80 transition-all cursor-pointer group mx-auto"
               >
                 <div className="absolute -inset-2 rounded-full border-2 border-dashed border-pink-300 animate-spin" style={{ animationDuration: '9s' }} />
                 <Crown className="w-9 h-9 text-white fill-white/80 group-hover:scale-110 transition-transform mb-1" />
@@ -158,16 +158,6 @@ export default function App() {
             <Crown className="w-3.5 h-3.5 text-pink-500" />
             <span className="hidden sm:inline">Sobre Real</span>
           </button>
-
-          {/* Download Button in Header */}
-          {/* <button
-            onClick={() => setIsDownloadModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-white/90 hover:bg-pink-50 text-pink-800 text-xs font-bold shadow-xs cursor-pointer transition-all border border-pink-200"
-            title="Descargar recursos de princesas bebés y castillo"
-          >
-            <Download className="w-3.5 h-3.5 text-pink-500" />
-            <span>Descargar</span>
-          </button> */}
         </div>
       </header>
 
@@ -187,7 +177,6 @@ export default function App() {
             });
           }}
           onRevealDetails={handleRevealDetails}
-          onOpenDownloadModal={() => setIsDownloadModalOpen(true)}
         />
 
         {/* Royal Storybook Scroll Sections (Details, Countdown, Maps, Itinerary, RSVP, Wishes) */}
@@ -205,12 +194,6 @@ export default function App() {
         onClose={() => setIsEditModalOpen(false)}
         invitation={invitation}
         onSave={handleSaveInvitation}
-      /> */}
-
-      {/* Download Assets Modal (Baby Princesses & Castle PNGs) */}
-      {/* <DownloadAssetsModal
-        isOpen={isDownloadModalOpen}
-        onClose={() => setIsDownloadModalOpen(false)}
       /> */}
     </div>
   );

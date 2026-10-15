@@ -18,12 +18,14 @@ function copyBabyAssetsPlugin() {
         }
 
         const assets = [
-          { src: 'castle.png', dest: path.join(publicDir, 'castle.png') },
-          { src: 'cinderella.png', dest: path.join(princessesDir, 'cinderella.png') },
-          { src: 'belle.png', dest: path.join(princessesDir, 'belle.png') },
-          { src: 'ariel.png', dest: path.join(princessesDir, 'ariel.png') },
-          { src: 'aurora.png', dest: path.join(princessesDir, 'aurora.png') },
-          { src: 'anna.png', dest: path.join(princessesDir, 'anna.png') },
+          { src: 'new_castle.png', dest: path.join(publicDir, 'castle.png') },
+          { src: 'user_rapunzel.png', dest: path.join(princessesDir, 'rapunzel.png') },
+          { src: 'user_aurora.png', dest: path.join(princessesDir, 'aurora.png') },
+          { src: 'user_ariel_dress.png', dest: path.join(princessesDir, 'ariel.png') },
+          { src: 'user_elsa.png', dest: path.join(princessesDir, 'elsa.png') },
+          { src: 'user_belle.png', dest: path.join(princessesDir, 'belle.png') },
+          { src: 'user_mulan.png', dest: path.join(princessesDir, 'mulan.png') },
+          { src: 'user_anna.png', dest: path.join(princessesDir, 'anna.png') },
         ];
 
         for (const item of assets) {

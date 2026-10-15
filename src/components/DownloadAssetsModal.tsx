@@ -96,7 +96,7 @@ export const DownloadAssetsModal: React.FC<DownloadAssetsModalProps> = ({
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold text-xs shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer border-2 border-white"
             >
               <Download className="w-4 h-4" />
-              <span>Descargar Todo el Paquete Real (Castillo + 5 Princesas Bebés)</span>
+              <span>Descargar Todo el Paquete Real (Castillo + 7 Princesas Bebés)</span>
             </button>
           </div>
 
